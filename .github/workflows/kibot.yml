@@ -1,0 +1,23 @@
+name: Automation
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  fab:
+    name: Fab Outputs
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: INTI-CMNB/KiBot@v2_k6
+      with:
+        dir: output
+        config: .github/kibot-fab.yml
+        schema: design/Marble.kicad_sch
+        board: design/Marble.kicad_pcb
+        verbose: 1
+    - name: Full output
+      uses: actions/upload-artifact@v4
+      if: ${{ always() }}
+      with:
+        name: Everything
+        path: output
