@@ -38,7 +38,7 @@ jobs:
       run: |
         git tag xxBASE ${{ github.event.pull_request.base.sha }}
         git log -n1 xxBASE
-    - uses: INTI-CMNB/KiBot@v2_k9
+    - uses: INTI-CMNB/KiBot@v2_dk9
       with:
         dir: diff
         config: .github/kibot-diff.yml
@@ -71,7 +71,7 @@ jobs:
       run: |
         git tag xxBASE ${{ matrix.base }}
         git log -n1 xxBASE
-    - uses: INTI-CMNB/KiBot@v2_k9
+    - uses: INTI-CMNB/KiBot@v2_dk9
       with:
         dir: diff
         config: .github/kibot-diff.yml
